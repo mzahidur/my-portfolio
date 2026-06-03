@@ -47,3 +47,17 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Personal documents
+attached_assets/
+
+# Replit-specific files
+.replit
+replit.nix
+.replitignore
+.npmrc
+replit.md
+ReplitExport-*.tar.gz
+
+# Lock file backup
+pnpm-lock.yaml.bak
