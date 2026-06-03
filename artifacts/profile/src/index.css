@@ -124,3 +124,273 @@
     @apply font-display tracking-tight;
   }
 }
+
+/* =============================================
+   PRINT / PDF STYLES
+   Triggered by Download CV button (window.print)
+   ============================================= */
+@media print {
+  @page {
+    margin: 18mm 16mm;
+    size: A4;
+  }
+
+  /* Hide everything that shouldn't appear in the PDF */
+  .no-print,
+  header,
+  footer,
+  nav {
+    display: none !important;
+  }
+
+  /* Reset to clean white page */
+  html, body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Remove fixed positioning from header so it doesn't overlay content */
+  header {
+    position: static !important;
+  }
+
+  /* Hero — compact two-column layout */
+  #about {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 24pt !important;
+    padding: 0 0 18pt 0 !important;
+    border-bottom: 1.5pt solid #d1d5db;
+    page-break-inside: avoid;
+  }
+
+  /* Show avatar in print, sized reasonably */
+  #about img {
+    width: 80pt !important;
+    height: 80pt !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    order: 2;
+  }
+
+  /* Hide the spinning decorative rings around the avatar */
+  #about .absolute.inset-2,
+  #about .absolute.inset-0 {
+    display: none !important;
+  }
+
+  #about > div:first-child {
+    order: 1;
+    flex: 1;
+  }
+
+  /* Shrink the massive hero headline */
+  #about h1 {
+    font-size: 22pt !important;
+    line-height: 1.2 !important;
+    color: #111827 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+  }
+
+  #about h1 span {
+    color: #1d4ed8 !important;
+    background: none !important;
+    -webkit-text-fill-color: #1d4ed8 !important;
+  }
+
+  #about p {
+    font-size: 10.5pt !important;
+    color: #374151 !important;
+  }
+
+  /* Contact links inline */
+  #about .flex.flex-wrap.items-center.gap-4 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6pt 14pt !important;
+    margin-top: 6pt !important;
+  }
+
+  #about a, #about div.flex.items-center {
+    color: #374151 !important;
+    text-decoration: none !important;
+    font-size: 9pt !important;
+  }
+
+  /* Experience badge / pill */
+  #about .inline-flex.items-center.gap-2.px-3 {
+    display: inline-flex !important;
+    border: 1pt solid #93c5fd !important;
+    color: #1d4ed8 !important;
+    background: #eff6ff !important;
+    font-size: 8pt !important;
+    padding: 2pt 6pt !important;
+    border-radius: 99pt !important;
+    margin-bottom: 6pt !important;
+  }
+
+  /* Summary quote section */
+  section.bg-primary\/5,
+  section.bg-muted\/20 {
+    page-break-inside: avoid;
+    padding: 12pt 0 !important;
+    border-top: none !important;
+    border-bottom: 1pt solid #e5e7eb !important;
+    background: none !important;
+  }
+
+  /* Expertise section */
+  #expertise {
+    padding: 14pt 0 !important;
+    border-top: none !important;
+    border-bottom: 1pt solid #e5e7eb !important;
+    background: none !important;
+  }
+
+  #expertise h2 {
+    font-size: 15pt !important;
+    margin-bottom: 10pt !important;
+    color: #111827 !important;
+  }
+
+  /* Expertise grid — 2 columns in print */
+  #expertise .grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8pt !important;
+  }
+
+  #expertise .rounded-xl,
+  #expertise .rounded-lg {
+    border: 1pt solid #e5e7eb !important;
+    background: #f9fafb !important;
+    padding: 8pt !important;
+    page-break-inside: avoid;
+  }
+
+  #expertise h3 {
+    font-size: 10pt !important;
+    color: #111827 !important;
+  }
+
+  #expertise p, #expertise li, #expertise span {
+    font-size: 9pt !important;
+    color: #374151 !important;
+  }
+
+  /* Hide tech logo icon strip — not meaningful in B&W print */
+  #expertise .grayscale {
+    display: none !important;
+  }
+
+  /* Work experience */
+  #experience {
+    padding: 14pt 0 !important;
+    border-top: none !important;
+    border-bottom: 1pt solid #e5e7eb !important;
+    background: none !important;
+  }
+
+  #experience h2 {
+    font-size: 15pt !important;
+    margin-bottom: 10pt !important;
+    color: #111827 !important;
+  }
+
+  #experience .border-l {
+    border-color: #93c5fd !important;
+    padding-left: 10pt !important;
+    margin-left: 4pt !important;
+  }
+
+  #experience h3 {
+    font-size: 11pt !important;
+    color: #111827 !important;
+    font-weight: 700;
+  }
+
+  #experience p, #experience li, #experience span {
+    font-size: 9pt !important;
+    color: #374151 !important;
+  }
+
+  #experience .rounded-full {
+    background: #1d4ed8 !important;
+  }
+
+  /* Keep each job together if possible */
+  #experience > div > div > div {
+    page-break-inside: avoid;
+    margin-bottom: 8pt !important;
+  }
+
+  /* Leadership section */
+  #leadership {
+    padding: 14pt 0 !important;
+    border-top: none !important;
+    border-bottom: 1pt solid #e5e7eb !important;
+    background: none !important;
+  }
+
+  #leadership h2 {
+    font-size: 15pt !important;
+    margin-bottom: 10pt !important;
+    color: #111827 !important;
+  }
+
+  #leadership .grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6pt !important;
+  }
+
+  #leadership .rounded-lg {
+    border: 1pt solid #e5e7eb !important;
+    background: #f9fafb !important;
+    padding: 6pt 8pt !important;
+    page-break-inside: avoid;
+  }
+
+  #leadership p, #leadership span {
+    font-size: 9pt !important;
+    color: #374151 !important;
+  }
+
+  /* Education */
+  section:has(h2 svg + *) {
+    padding: 12pt 0 0 0 !important;
+    background: none !important;
+    border: none !important;
+  }
+
+  /* Remove all motion/animation artifacts */
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Ensure text colors render */
+  .text-muted-foreground {
+    color: #6b7280 !important;
+  }
+
+  .text-primary {
+    color: #1d4ed8 !important;
+  }
+
+  /* Remove decorative blobs / glows */
+  .blur-3xl, .blur-2xl {
+    display: none !important;
+  }
+}

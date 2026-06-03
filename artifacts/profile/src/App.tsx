@@ -18,7 +18,8 @@ import {
   Code2,
   Users,
   Briefcase,
-  GraduationCap
+  GraduationCap,
+  Download
 } from "lucide-react";
 import { 
   SiDotnet, 
@@ -240,6 +241,17 @@ function Home() {
                 <MapPin size={20} />
                 <span className="text-sm font-medium">{DATA.location}</span>
               </div>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="pt-2">
+              <button
+                data-testid="button-download-cv"
+                onClick={() => window.print()}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-md text-sm font-semibold hover:bg-primary/90 active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20 no-print"
+              >
+                <Download size={16} />
+                Download CV
+              </button>
             </motion.div>
           </motion.div>
           
